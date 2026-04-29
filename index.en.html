@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hotel Business in Kaş — Field Research</title>
+<meta name="description" content="Map of 35 problems faced by boutique hotel and villa operators in Kaş, Antalya. Field research with sources.">
+<style>
+  :root {
+    --bg: oklch(96% 0.02 80);
+    --paper: oklch(98% 0.01 80);
+    --ink: oklch(22% 0.03 60);
+    --muted: oklch(45% 0.02 60);
+    --accent: oklch(52% 0.16 30);
+    --line: oklch(85% 0.02 80);
+    --chip: oklch(92% 0.04 80);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  header.hero {
+    padding: 80px 24px 48px;
+    background: linear-gradient(180deg, oklch(94% 0.04 70), var(--bg));
+    border-bottom: 1px solid var(--line);
+  }
+  .wrap { max-width: 780px; margin: 0 auto; }
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  h1 {
+    font-size: clamp(36px, 6vw, 56px);
+    line-height: 1.05;
+    margin: 0 0 20px;
+    letter-spacing: -0.02em;
+    font-weight: 700;
+  }
+  .lede {
+    font-size: 20px;
+    color: var(--muted);
+    margin: 0 0 32px;
+    max-width: 640px;
+  }
+  .meta {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .meta span {
+    background: var(--chip);
+    padding: 6px 12px;
+    border-radius: 999px;
+  }
+  nav.toc {
+    position: sticky;
+    top: 0;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    padding: 12px 24px;
+    z-index: 10;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  nav.toc .wrap { display: flex; gap: 20px; font-size: 13px; }
+  nav.toc a {
+    color: var(--muted);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  nav.toc a:hover { color: var(--accent); }
+  main { padding: 48px 24px 80px; }
+  section { margin-bottom: 56px; }
+  h2 {
+    font-size: 28px;
+    margin: 0 0 20px;
+    letter-spacing: -0.01em;
+    border-left: 4px solid var(--accent);
+    padding-left: 14px;
+  }
+  h3 {
+    font-size: 19px;
+    margin: 32px 0 12px;
+    color: var(--accent);
+  }
+  p, li { color: var(--ink); }
+  ul { padding-left: 22px; }
+  li { margin-bottom: 8px; }
+  .problem {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+  .problem .num {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 28px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+  .problem .severity {
+    float: right;
+    background: var(--chip);
+    padding: 2px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .problem .title { font-weight: 600; vertical-align: middle; }
+  .problem .body { color: var(--muted); font-size: 15px; margin-top: 8px; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--paper);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    font-size: 15px;
+  }
+  th, td {
+    text-align: left;
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--line);
+  }
+  th {
+    background: var(--chip);
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+  }
+  tr:last-child td { border-bottom: none; }
+  .pill {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+  }
+  .product {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 18px;
+  }
+  .product strong { color: var(--accent); display: block; margin-bottom: 4px; }
+  .product .attacks { font-size: 13px; color: var(--muted); margin-top: 8px; }
+  .sources { font-size: 14px; }
+  .sources h3 { margin-top: 24px; font-size: 15px; color: var(--ink); }
+  .sources a {
+    display: block;
+    padding: 6px 0;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--line);
+  }
+  .sources a:hover { text-decoration: underline; }
+  footer {
+    padding: 40px 24px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 14px;
+    text-align: center;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    background: var(--paper);
+    padding: 14px 18px;
+    margin: 20px 0;
+    color: var(--muted);
+    font-style: italic;
+    border-radius: 0 8px 8px 0;
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Field Research · Antalya, Turkey</div>
+    <h1>Hotel Business in Kaş</h1>
+    <p class="lede">A map of 35 problems faced by boutique hotel, guesthouse, and villa operators on the Lycian coast — with sources, severity, and product implications.</p>
+    <div class="meta">
+      <span>Updated 2026-04-29</span>
+      <span>~300–400 boutique properties</span>
+      <span>~800–1,000 commercial villas</span>
+      <span>OTA dependency: 60–70%</span>
+    </div>
+  </div>
+</header>
+
+<nav class="toc">
+  <div class="wrap">
+    <a href="#market">Market</a>
+    <a href="#ota">OTA</a>
+    <a href="#season">Seasonality</a>
+    <a href="#regulation">Regulation</a>
+    <a href="#macro">Macro</a>
+    <a href="#staff">Staff</a>
+    <a href="#marketing">Marketing</a>
+    <a href="#climate">Climate</a>
+    <a href="#digital">Digital</a>
+    <a href="#top10">Top 10</a>
+    <a href="#products">Products</a>
+    <a href="#sources">Sources</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<section id="market">
+  <h2>1. Market profile</h2>
+  <blockquote>Kaş is not Antalya-center. ~8,000 winter residents, up to 50,000 in peak summer. No all-inclusive giants — the market is built on boutique hotels, guesthouses, and villas. English is the working second language; guests come from Europe, Turkish cities, plus dive and paragliding crowds.</blockquote>
+
+  <h3>Supply</h3>
+  <ul>
+    <li><strong>Kaş:</strong> ~2,162 listings on Expedia (273 apartments, 83 guesthouses, 19 villas, 287 hostels) plus ~150–200 small and boutique hotels.</li>
+    <li><strong>Kalkan</strong> (30 min away): ~1,326 listings, almost entirely boutique hotels and pool villas.</li>
+    <li><strong>B2B TAM:</strong> ~300–400 boutique properties + ~800–1,000 commercial villas.</li>
+  </ul>
+
+  <h3>Seasonality &amp; economics</h3>
+  <ul>
+    <li><strong>High season:</strong> May–October, peak June–August.</li>
+    <li><strong>Low season:</strong> November–April — most properties effectively dead, many close fully.</li>
+    <li><strong>Antalya region 2023:</strong> ADR €172.1 (+19% YoY), RevPAR €96.8 (+8%), occupancy 56.2%.</li>
+    <li><strong>Kalkan villas:</strong> 9–12% annual yield, ~€25,000 per season, 85% summer occupancy, up to €4,000/week peak.</li>
+  </ul>
+
+  <h3>Owner archetypes</h3>
+  <ul>
+    <li><strong>Kalkan</strong> = "British colony": British/German/Dutch villa owners, many living in the UK, managing remotely.</li>
+    <li><strong>Kaş</strong> = more Turkish-owned + Russian/European boutique operators + dive industry + paragliding. Owners typically live on site.</li>
+  </ul>
+</section>
+
+<section id="ota">
+  <h2>2. Sales channels &amp; OTA dependency</h2>
+  <div class="problem"><span class="severity">5/5</span><span class="num">1</span><span class="title">Booking.com 15–25% commission eats the margin.</span><div class="body">Base rate is 15%, but Preferred Partner Programme + Genius discounts push the effective load to 25%.</div></div>
+  <div class="problem"><span class="severity">5/5</span><span class="num">2</span><span class="title">80% of bookings through a single channel.</span><div class="body">A typical Antalya boutique gets up to 80% of revenue via Booking.com (Luna Butik Hotel case). One ranking-algorithm change = -30% revenue in a week.</div></div>
+  <div class="problem"><span class="severity">4/5</span><span class="num">3</span><span class="title">Booking won't share guest email/phone.</span><div class="body">No repeat campaigns, no loyalty programs, no direct mailing — the guest stays Booking's, not yours.</div></div>
+  <div class="problem"><span class="severity">4/5</span><span class="num">4</span><span class="title">Rate parity / price parity clauses.</span><div class="body">OTA contracts forbid pricing lower on your own site. Kills the main argument for direct bookings.</div></div>
+  <div class="problem"><span class="severity">3/5</span><span class="num">5</span><span class="title">Booking.com bans inside Turkey.</span><div class="body">Istanbul Commercial Court, on TÜRSAB's complaint, has periodically suspended Booking.com for Turkish users. Foreigners can book from abroad — Turkish domestic guests can't.</div></div>
+</section>
+
+<section id="season">
+  <h2>3. Seasonality &amp; cashflow</h2>
+  <div class="problem"><span class="severity">5/5</span><span class="num">6</span><span class="title">5/12 seasonality.</span><div class="body">Seven months of zero revenue. Wages, rent, taxes run all year, income only half. High exit risk (Zhang &amp; Xie 2023: high occupancy variance = elevated bankruptcy probability).</div></div>
+  <div class="problem"><span class="severity">4/5</span><span class="num">7</span><span class="title">No dynamic pricing.</span><div class="body">Small hotels sell at fixed rack rates or naive "summer up, winter down". Antalya-center competitors already run revenue management — Kaş lags.</div></div>
+  <div class="problem"><span class="severity">4/5</span><span class="num">8</span><span class="title">Cannot keep year-round staff.</span><div class="body">Seasonal workers come for 5–6 months and leave. Constant loss of trained people; every May means retraining from scratch.</div></div>
+  <div class="problem"><span class="severity">3/5</span><span class="num">9</span><span class="title">Booking concentration in May/August spikes.</span><div class="body">Prices can triple in one week (May 2026: ₽51,000 → ₽147,000 weekly in the same hotel). Creates expectation/reality mismatch and review damage.</div></div>
+</section>
+
+<section id="regulation">
+  <h2>4. Regulation &amp; taxes</h2>
+  <div class="problem"><span class="severity">4/5</span><span class="num">10</span><span class="title">Konaklama vergisi 2% + e-Fatura code 0059.</span><div class="body">Accommodation tax introduced 2023; monthly declaration due by 26th. Late penalties are real. Law amended August 2025 — accountants in the region are overloaded.</div></div>
+  <div class="problem"><span class="severity">5/5</span><span class="num">11</span><span class="title">Mandatory tourism certification.</span><div class="body">May 2024: government shut down 4,000+ hotels nationwide for failing to obtain national tourism certification (introduced 2021). Small Kaş properties are at risk.</div></div>
+  <div class="problem"><span class="severity">3/5</span><span class="num">12</span><span class="title">Sustainability certification mandate for 100+ beds (2026).</span><div class="body">In Kaş it directly hits few — most properties have &lt;100 beds — but villa complexes and the larger hotels are caught.</div></div>
+  <div class="problem"><span class="severity">4/5</span><span class="num">13</span><span class="title">Foreigner registration / NDTS / e-Arşiv.</span><div class="body">Every foreign guest must be registered in 24 hours. A manual process that eats reception time in summer.</div></div>
+  <div class="problem"><span class="severity">4/5</span><span class="num">14</span><span class="title">Absentee British/German owners can't read Turkish accounting.</span><div class="body">In Kalkan most owners live in the UK; the Turkish accountant is the only contact and is often silent or wrong.</div></div>
+  <div class="problem"><span class="severity">3/5</span><span class="num">15</span><span class="title">Licensing for boat tours, diving, paragliding.</span><div class="body">Hotels resell activities, but legally that's travel-agent work. No license = fines.</div></div>
+</section>
+
+<section id="macro">
+  <h2>5. Macro: inflation, lira, euro</h2>
+  <div class="problem"><span class="severity">5/5</span><span class="num">16</span><span class="title">Inflation and operating cost surge.</span><div class="body">After +49% to minimum wage (Dec 2024), payroll exploded. Antalya small business calls it a "debilitating problem."</div></div>
+  <div class="problem"><span class="severity">4/5</span><span class="num">17</span><span class="title">Rents doubled.</span><div class="body">In neighboring Konyaaltı beach club rents jumped from ₺2M to ₺4M/month. For leased hotels — catastrophic.</div></div>
+  <div class="problem"><span class="severity">4/5</span><span class="num">18</span><span class="title">Volatile lira while pricing in EUR.</span><div class="body">Booking prices in EUR, payouts in TRY, real revenue swings ±15%. Supplier contracts (food, laundry, taxis) in TRY at ~50% annual inflation.</div></div>
+  <div class="problem"><span class="severity">5/5</span><span class="num">19</span><span class="title">Turkey is now an "expensive country" for tourists.</span><div class="body">Family-night cost in Antalya: $100–130 → $150–200. Drop in German/UK/Russian visitors in 2025. Ministry of Tourism itself names "expensive country" as the main obstacle.</div></div>
+  <div class="problem"><span class="severity">4/5</span><span class="num">20</span><span class="title">A stronger lira is reducing flow.</span><div class="body">YoY foreign-arrivals growth slowed from +4.99% (Dec 2025) to +3.48% (Jan 2026). Kaş, as a premium endpoint, feels it first.</div></div>
+</section>
+
+<section id="staff">
+  <h2>6. Staff &amp; service</h2>
+  <div class="problem"><span class="severity">4/5</span><span class="num">21</span><span class="title">Talent drain — Dubai and Doha take the managers.</span><div class="body">Turkish hospitality leaders earn 2.5–3× more in the Gulf, tax-free, year-round. Antalya 5* GM vacancies stay open 6–9 months. Kaş has the same effect — ready managers leave.</div></div>
+  <div class="problem"><span class="severity">4/5</span><span class="num">22</span><span class="title">Reception speaks weak English.</span><div class="body">60–70% of Kalkan guests are British; Kaş guests are multilingual European. Reception is often Turkish + basic English. Complaints in reviews hit the rating directly.</div></div>
+  <div class="problem"><span class="severity">4/5</span><span class="num">23</span><span class="title">WhatsApp overload at reception.</span><div class="body">Guests send 20–50 messages/day in summer: "where's a taxi", "when's breakfast", "book a restaurant". Without an AI concierge, reception burns out.</div></div>
+  <div class="problem"><span class="severity">3/5</span><span class="num">24</span><span class="title">Replying to reviews in 3 languages eats hours.</span><div class="body">TripAdvisor + Google + Booking, EN/RU/TR. Owners must reply personally — 1–2 hours/day in high season.</div></div>
+  <div class="problem"><span class="severity">3/5</span><span class="num">25</span><span class="title">Low-quality Booking photos.</span><div class="body">Direct correlation: photos → conversion. Most small properties shot on a phone 5 years ago. Photo refresh = +12% CTR.</div></div>
+</section>
+
+<section id="marketing">
+  <h2>7. Marketing &amp; content</h2>
+  <div class="problem"><span class="severity">4/5</span><span class="num">26</span><span class="title">No bandwidth for Instagram/TikTok.</span><div class="body">Istanbul/Antalya SMM agencies want $1–2K/month — out of reach. Owners can't keep up. Accounts frozen since 2023.</div></div>
+  <div class="problem"><span class="severity">3/5</span><span class="num">27</span><span class="title">No Google Ads / direct marketing.</span><div class="body">"Kalkan villa", "Kaş boutique hotel" are high-intent keywords. Nobody small bids on them. Everyone funnels traffic to Booking, which then takes 20%.</div></div>
+  <div class="problem"><span class="severity">3/5</span><span class="num">28</span><span class="title">Manual competitive intel.</span><div class="body">Owners spend 1–2 hours every two weeks manually reviewing neighbors' prices, availability, reviews. No automation.</div></div>
+</section>
+
+<section id="climate">
+  <h2>8. Climate, infrastructure, natural risk</h2>
+  <div class="problem"><span class="severity">4/5</span><span class="num">29</span><span class="title">Forest fires.</span><div class="body">Antalya and Muğla top burned-area rankings 2014–2024. Kaş fires June 26–27, 2021. Threat every summer — evacuations, cancellations, smoke insurance claims.</div></div>
+  <div class="problem"><span class="severity">3/5</span><span class="num">30</span><span class="title">July–August heat + infrastructure overload.</span><div class="body">"Kaş may be too crowded in July–August, weather too hot." Complaints about water supply, parking, the seafront — the hotel takes the rating hit for things outside its control.</div></div>
+  <div class="problem"><span class="severity">2/5</span><span class="num">31</span><span class="title">Seismic / flood / storm exposure.</span><div class="body">Region is in a risk zone. Turkish insurers tightening rates.</div></div>
+  <div class="problem"><span class="severity">3/5</span><span class="num">32</span><span class="title">Construction &amp; SIT-zone restrictions.</span><div class="body">Parts of Kaş are archaeological/conservation zones. Renovation, expansion, even window replacement need permits that can take months.</div></div>
+</section>
+
+<section id="digital">
+  <h2>9. Digital maturity</h2>
+  <div class="problem"><span class="severity">3/5</span><span class="num">33</span><span class="title">PMS is missing or local "Turkish".</span><div class="body">Small hotels often run on Excel or local Hotelogix/Hotelinking variants. No integration with modern channel managers / revenue tools.</div></div>
+  <div class="problem"><span class="severity">4/5</span><span class="num">34</span><span class="title">No CRM.</span><div class="body">Guests came 3 times — the hotel doesn't know their name. Repeat marketing = 0.</div></div>
+  <div class="problem"><span class="severity">3/5</span><span class="num">35</span><span class="title">No analytics.</span><div class="body">Owners don't know real RevPAR / ADR / occupancy by month. Pricing decisions on intuition.</div></div>
+</section>
+
+<section id="top10">
+  <h2>10. Top-10 priority pains</h2>
+  <table>
+    <thead>
+      <tr><th>#</th><th>Problem</th><th>Severity</th><th>Most affected</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>80% Booking dependency + 15–25% commission</td><td><span class="pill">5</span></td><td>Everyone</td></tr>
+      <tr><td>2</td><td>5/12 seasonality, no winter cashflow</td><td><span class="pill">5</span></td><td>Everyone, especially small</td></tr>
+      <tr><td>3</td><td>Inflation + payroll + rent</td><td><span class="pill">5</span></td><td>Leased operators</td></tr>
+      <tr><td>4</td><td>Turkey "expensive" → EU/UK demand drop</td><td><span class="pill">5</span></td><td>Premium Kalkan segment</td></tr>
+      <tr><td>5</td><td>Certification — shutdown risk</td><td><span class="pill">5</span></td><td>Uncertified</td></tr>
+      <tr><td>6</td><td>No dynamic pricing → 12–18% RevPAR loss</td><td><span class="pill">4</span></td><td>Boutique hotels</td></tr>
+      <tr><td>7</td><td>Talent drain, weak English reception</td><td><span class="pill">4</span></td><td>Premium segment</td></tr>
+      <tr><td>8</td><td>Konaklama vergisi + e-Fatura compliance</td><td><span class="pill">4</span></td><td>Everyone, esp. absentee</td></tr>
+      <tr><td>9</td><td>WhatsApp overload in summer</td><td><span class="pill">4</span></td><td>High-occupancy</td></tr>
+      <tr><td>10</td><td>No CRM / repeat campaigns</td><td><span class="pill">4</span></td><td>Everyone</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="products">
+  <h2>11. Implications for AI / B2B products</h2>
+  <p>Five products with the highest buy-readiness given the pains above:</p>
+  <div class="grid">
+    <div class="product"><strong>KaşDirect</strong>Direct booking site + AI chat (5 languages).<div class="attacks">Attacks #1, #2, #3</div></div>
+    <div class="product"><strong>Konaklama Autopilot</strong>Bot for tax + e-Fatura + foreigner registration.<div class="attacks">Attacks #10, #13, #14</div></div>
+    <div class="product"><strong>ReputationVoice</strong>AI replies to reviews on TripAdvisor/Google/Booking.<div class="attacks">Attacks #24, #22</div></div>
+    <div class="product"><strong>WhatsGuest Concierge</strong>AI concierge in WhatsApp + upsell.<div class="attacks">Attacks #23 + upsell</div></div>
+    <div class="product"><strong>PriceRadar</strong>Dynamic pricing + competitor watch.<div class="attacks">Attacks #7, #28</div></div>
+  </div>
+</section>
+
+<section id="sources" class="sources">
+  <h2>12. Sources</h2>
+
+  <h3>Macro trends — Turkey / Antalya</h3>
+  <a href="https://kitalent.com/articles/article-antalya-hospitality-talent-drain/" target="_blank">Antalya Tourism Talent Drain — KiTalent</a>
+  <a href="https://www.costar.com/article/156809668/european-outbound-hotel-demand-slides-as-inflation-erodes-turkeys-price-advantage" target="_blank">European outbound hotel demand slides — CoStar</a>
+  <a href="https://www.costar.com/article/837725286/inflation-has-dealt-turkeys-hotels-a-major-blow-during-traditional-peak-summer-season" target="_blank">Inflation hits Turkey's hotels — CoStar</a>
+  <a href="https://www.travelandtourworld.com/news/article/tourism-slowdown-in-turkey-as-inflation-and-strong-lira-affect-visitor-choices/" target="_blank">Tourism slowdown — Travel and Tour World</a>
+  <a href="https://www.ainvest.com/news/stronger-lira-slows-rkiye-tourism-influx-2602/" target="_blank">Stronger Lira Slows Türkiye's Tourism — AInvest</a>
+  <a href="https://www.turkeyrecap.com/p/antalyas-tourism-industry-adapts" target="_blank">Antalya tourism adapts to inflation — Turkey Recap</a>
+  <a href="https://www.tourism-review.com/turkeys-tourism-numbers-affected-by-higher-prices-news15031" target="_blank">High Prices Negatively Affect Turkey's Tourism</a>
+  <a href="https://www.agbi.com/tourism/2024/07/rising-costs-and-fewer-visitors-hit-turkey-tourism/" target="_blank">Rising costs hit Turkey tourism — AGBI</a>
+
+  <h3>Booking.com &amp; OTAs</h3>
+  <a href="https://www.hotelmanagement.net/development/why-turkey-s-hotels-are-uniting-behind-booking-com" target="_blank">Why Turkey's hotels unite behind Booking.com — Hotel Management</a>
+  <a href="https://hospitality-on.com/en/distribution/bookingcom-suspended-turkey" target="_blank">Booking.com ban — Hospitality ON</a>
+  <a href="https://www.hurriyetdailynews.com/turkish-travel-association-seeks-to-extend-booking-com-ban-to-airbnb-expedia-skyscanner-135602" target="_blank">TÜRSAB seeks to extend ban — Hürriyet</a>
+  <a href="https://www.aa.com.tr/en/turkey/turkey-court-rules-unfair-competition-of-bookingcom/1618938" target="_blank">Booking.com unfair competition ruling — Anadolu Agency</a>
+
+  <h3>Seasonality &amp; occupancy</h3>
+  <a href="https://ec.europa.eu/eurostat/statistics-explained/index.php/Seasonality_in_the_tourist_accommodation_sector" target="_blank">Seasonality in tourist accommodation — Eurostat</a>
+  <a href="https://journals.sagepub.com/doi/full/10.1177/10963480211016038" target="_blank">Tourism seasonality and exit risk — Zhang &amp; Xie 2023</a>
+
+  <h3>Fires &amp; climate</h3>
+  <a href="https://en.wikipedia.org/wiki/Wildfires_in_Turkey" target="_blank">Wildfires in Turkey — Wikipedia</a>
+  <a href="https://www.mdpi.com/2220-9964/13/3/74" target="_blank">Antalya forest fire dynamics — MDPI</a>
+  <a href="https://www.dailysabah.com/turkiye/teams-pace-up-efforts-to-control-wildfire-in-turkiyes-antalya/news" target="_blank">Forest fire impact on hotels — Daily Sabah</a>
+
+  <h3>Russian inbound</h3>
+  <a href="https://www.tourprom.ru/news/79318/" target="_blank">Tourprom: Antalya 2026 forecasts</a>
+  <a href="https://www.tourprom.ru/news/85516/" target="_blank">Tourprom: Antalya 2026 hotel prices</a>
+  <a href="https://www.atorus.ru/article/osman-ayyk-rossiya-v-2025-godu-ostalas-rynkom-nomer-odin-v-antale-s-rostom-na-345-65947" target="_blank">ATOR: Osman Ayık on 2025 wrap-up</a>
+
+  <h3>Kaş / Kalkan / activities</h3>
+  <a href="https://www.expedia.com/Kas-Hotels.d6047444.Travel-Guide-Hotels" target="_blank">Expedia Kaş Travel Guide</a>
+  <a href="https://www.padi.com/diving-in/kas/" target="_blank">Diving Kaş — PADI</a>
+  <a href="https://kaskalkantours.com/" target="_blank">Kaş Tours &amp; Lycian Way</a>
+  <a href="https://www.boutiquesmallhotels.com/kas-hotels" target="_blank">Boutique hotels Kaş</a>
+
+  <h3>Regulation</h3>
+  <a href="https://www.capitaldenetim.com.tr/2024-88-kisa-sureli-konaklama-hizmetleri-icin-duzenlenen-faturalarda-konaklama-vergisi-ve-hangi-oranda-kdv-uygulanacagi-hk" target="_blank">Konaklama Vergisi — Capital Denetim 2024/88</a>
+  <a href="https://www.uyumsoft.com/blog/konaklama-vergisi-nedir-nasil-hesaplanir" target="_blank">Konaklama Vergisi guide — Uyumsoft</a>
+  <a href="https://trippz.com/tourist-tax/t%C3%BCrkiye" target="_blank">Tourist Tax Turkey 2025 — Trippz</a>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    Field research · Tim Zinin · Repository on
+    <a href="https://github.com/TimmyZinin/kas-hotel-business-research" target="_blank" style="color: var(--accent);">GitHub</a>
+  </div>
+</footer>
+
+</body>
+</html>
